@@ -1,0 +1,111 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/products/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/products/{everything}",
+      "ServiceName": "ProductService",
+      "UpstreamHttpMethod": [ "Get" ],
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "PortalGatewayAuthKey",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/products",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/products",
+      "ServiceName": "ProductService",
+      "UpstreamHttpMethod": [ "Get" ],
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "PortalGatewayAuthKey",
+        "AllowedScopes": []
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/offers",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/offers",
+      "ServiceName": "PolicyService",
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "PortalGatewayAuthKey",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "role": "agent"
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/policies",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/policies",
+      "ServiceName": "PolicyService",
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "PortalGatewayAuthKey",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "userType": "agent"
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/policies/{number}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/policies/{number}",
+      "ServiceName": "PolicyService",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "PortalGatewayAuthKey",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "userType": "agent"
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/policySearch",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/policySearch",
+      "ServiceName": "PolicySearchService",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "PortalGatewayAuthKey",
+        "AllowedScopes": []
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/pricing",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/pricing",
+      "ServiceName": "PricingService",
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "PortalGatewayAuthKey",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "userType": "agent"
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration",
+    "UseServiceDiscovery": true,
+    "ServiceDiscoveryProvider": {
+      "Type": "Eureka",
+      "Host": "localhost",
+      "Port": "8761"
+    }
+  }
+}
