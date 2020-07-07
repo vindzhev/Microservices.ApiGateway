@@ -1,5 +1,7 @@
 namespace Portal.Gateway
 {
+    using System;
+    
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Builder;
@@ -8,14 +10,13 @@ namespace Portal.Gateway
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 
+    using Microsoft.IdentityModel.Logging;
+    using IdentityServer4.AccessTokenValidation;
+
     using Ocelot.Middleware;
-    using Ocelot.Provider.Eureka;
+    using Ocelot.Provider.Consul;
     using Ocelot.Cache.CacheManager;
     using Ocelot.DependencyInjection;
-    using IdentityServer4.AccessTokenValidation;
-    using Ocelot.Logging;
-    using System;
-    using Microsoft.IdentityModel.Logging;
 
     public class Program
     {
@@ -46,7 +47,7 @@ namespace Portal.Gateway
                         .AddIdentityServerAuthentication("PortalGatewayAuthKey", options);
 
                     services.AddOcelot()
-                        .AddEureka().AddCacheManager(x => x.WithDictionaryHandle());
+                        .AddConsul().AddCacheManager(x => x.WithDictionaryHandle());
                 })
                 .Configure(app =>
                 {
