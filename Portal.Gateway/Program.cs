@@ -37,14 +37,14 @@ namespace Portal.Gateway
                 {
                     services.AddCors();
 
-                    Action<IdentityServerAuthenticationOptions> options = o =>
-                    {
-                        o.Authority = "https://localhost:5000";
-                        o.SupportedTokens = SupportedTokens.Both;
-                    };
+                    //Action<IdentityServerAuthenticationOptions> options = o =>
+                    //{
+                    //    o.Authority = "https://localhost:5000";
+                    //    o.SupportedTokens = SupportedTokens.Both;
+                    //};
 
-                    services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-                        .AddIdentityServerAuthentication("PortalGatewayAuthKey", options);
+                    //services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                    //    .AddIdentityServerAuthentication("PortalGatewayAuthKey", options);
 
                     services.AddOcelot()
                         .AddConsul().AddCacheManager(x => x.WithDictionaryHandle());

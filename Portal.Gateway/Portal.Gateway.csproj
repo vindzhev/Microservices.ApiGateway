@@ -2,11 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>df6fa394-ed67-4f2b-a20b-abaab4a6615d</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Consul" Version="1.6.1.1" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Ocelot" Version="16.0.1" />
     <PackageReference Include="Ocelot.Cache.CacheManager" Version="16.0.1" />
     <PackageReference Include="Ocelot.Provider.Consul" Version="16.0.1" />

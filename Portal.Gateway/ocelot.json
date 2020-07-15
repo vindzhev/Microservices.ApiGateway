@@ -4,98 +4,98 @@
       "DownstreamPathTemplate": "/api/products/{everything}",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/products/{everything}",
-      "ServiceName": "ProductService",
+      "ServiceName": "product-service",
       "UpstreamHttpMethod": [ "Get" ],
-      "FileCacheOptions": { "TtlSeconds": 15 },
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "PortalGatewayAuthKey",
-        "AllowedScopes": []
-      }
+      "FileCacheOptions": { "TtlSeconds": 15 }
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "PortalGatewayAuthKey",
+      //  "AllowedScopes": []
+      //}
     },
     {
       "DownstreamPathTemplate": "/api/products",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/products",
-      "ServiceName": "ProductService",
-      "UpstreamHttpMethod": [ "Get" ],
-      "FileCacheOptions": { "TtlSeconds": 15 },
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "PortalGatewayAuthKey",
-        "AllowedScopes": []
-      }
-    },
-
-    {
-      "DownstreamPathTemplate": "/api/offers",
-      "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/offers",
-      "ServiceName": "PolicyService",
-      "UpstreamHttpMethod": [ "Post" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "PortalGatewayAuthKey",
-        "AllowedScopes": []
-      },
-      "RouteClaimsRequirement": {
-        "role": "agent"
-      }
-    },
-
-    {
-      "DownstreamPathTemplate": "/api/policies",
-      "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/policies",
-      "ServiceName": "PolicyService",
-      "UpstreamHttpMethod": [ "Post" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "PortalGatewayAuthKey",
-        "AllowedScopes": []
-      },
-      "RouteClaimsRequirement": {
-        "userType": "agent"
-      }
-    },
-
-    {
-      "DownstreamPathTemplate": "/api/policies/{number}",
-      "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/policies/{number}",
-      "ServiceName": "PolicyService",
-      "UpstreamHttpMethod": [ "Get", "Delete" ],
-      "FileCacheOptions": { "TtlSeconds": 15 },
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "PortalGatewayAuthKey",
-        "AllowedScopes": []
-      },
-      "RouteClaimsRequirement": {
-        "userType": "agent"
-      }
-    },
-
-    {
-      "DownstreamPathTemplate": "/api/policySearch",
-      "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/policySearch",
-      "ServiceName": "PolicySearchService",
-      "UpstreamHttpMethod": [ "Get" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "PortalGatewayAuthKey",
-        "AllowedScopes": []
-      }
+      "ServiceName": "product-service",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "FileCacheOptions": { "TtlSeconds": 15 }
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "PortalGatewayAuthKey",
+      //  "AllowedScopes": []
+      //}
     },
 
     {
       "DownstreamPathTemplate": "/api/pricing",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/pricing",
-      "ServiceName": "PricingService",
-      "UpstreamHttpMethod": [ "Post" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "PortalGatewayAuthKey",
-        "AllowedScopes": []
-      },
-      "RouteClaimsRequirement": {
-        "userType": "agent"
-      }
+      "ServiceName": "pricing-service",
+      "UpstreamHttpMethod": [ "Post" ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "PortalGatewayAuthKey",
+      //  "AllowedScopes": []
+      //},
+      //"RouteClaimsRequirement": {
+      //  "role": "agent"
+      //}
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/offers",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/offers",
+      "ServiceName": "policy-service",
+      "UpstreamHttpMethod": [ "Post" ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "PortalGatewayAuthKey",
+      //  "AllowedScopes": []
+      //},
+      //"RouteClaimsRequirement": {
+      //  "role": "agent"
+      //}
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/policies",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/policies",
+      "ServiceName": "policy-service",
+      "UpstreamHttpMethod": [ "Post" ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "PortalGatewayAuthKey",
+      //  "AllowedScopes": []
+      //},
+      //"RouteClaimsRequirement": {
+      //  "role": "agent"
+      //}
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/policies/{number}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/policies/{number}",
+      "ServiceName": "policy-service",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "FileCacheOptions": { "TtlSeconds": 15 }
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "PortalGatewayAuthKey",
+      //  "AllowedScopes": []
+      //},
+      //"RouteClaimsRequirement": {
+      //  "role": "agent"
+      //}
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/policySearch",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/policySearch",
+      "ServiceName": "policy-search-service",
+      "UpstreamHttpMethod": [ "Get" ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "PortalGatewayAuthKey",
+      //  "AllowedScopes": []
+      //}
     }
   ],
   "GlobalConfiguration": {
@@ -104,7 +104,7 @@
     "UseServiceDiscovery": true,
     "ServiceDiscoveryProvider": {
       "Type": "Consul",
-      "Host": "localhost",
+      "Host": "consul",
       "Port": 8500
     }
   }
