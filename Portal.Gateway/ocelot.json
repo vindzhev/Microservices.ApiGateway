@@ -1,6 +1,14 @@
 {
   "Routes": [
     {
+      "DownstreamPathTemplate": "/api/categories",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/categories",
+      "ServiceName": "product-service",
+      "UpstreamHttpMethod": [ "Get" ],
+      "FileCacheOptions": { "TtlSeconds": 300 }
+    },
+    {
       "DownstreamPathTemplate": "/api/products/{everything}",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/products/{everything}",
